@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    --main-font: font-family: "Inter", sans-serif;
+}
+
+.container {
+    @apply mx-auto px-4 md:px-8 lg:px-30 xl:px-30
+}
+
+.paragraphColor{
+  @apply text-[#999999]
+}
+
+.scale-up-center:hover {
+  animation: scale-up-center 0.4s ease-in-out;
+}
+
+@keyframes scale-up-center {
+  0% {
+    transform: scale(0.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+
