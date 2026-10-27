@@ -14,12 +14,6 @@
     "productName": {
       "type": "string"
     },
-    "productPrice": {
-      "type": "string"
-    },
-    "sale": {
-      "type": "string"
-    },
     "ProductImage": {
       "type": "media",
       "multiple": false,
@@ -40,7 +34,16 @@
         "audios"
       ]
     },
-    "rateStar": {
+    "outOfStock": {
+      "type": "boolean"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categorie.categorie",
+      "inversedBy": "products"
+    },
+    "image1": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -50,17 +53,61 @@
         "audios"
       ]
     },
-    "oldPrice": {
+    "image2": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "image3": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "numberOfStars": {
+      "type": "integer"
+    },
+    "sale": {
+      "type": "decimal"
+    },
+    "productPrice": {
+      "type": "decimal"
+    },
+    "mainDescription": {
+      "type": "text"
+    },
+    "addedInformation1": {
       "type": "string"
     },
-    "outOfStock": {
-      "type": "boolean"
+    "addedInformation2": {
+      "type": "string"
     },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::categorie.categorie",
-      "inversedBy": "products"
+    "addedInformation3": {
+      "type": "string"
+    },
+    "addedInformation4": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "integer"
+    },
+    "color": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "string"
     }
   }
 }

@@ -10,6 +10,7 @@ import BannerShop from "../../Components/BannerShop";
 import PopularProducts from "../../Components/PopularProducts";
 import Newsletter from "../../Components/Newsletter";
 import Footer from "../../Components/Footer";
+import PopSingleProduct from "../../Components/PopSingleProduct";
 
 export default function Shop() {
   const { className } = useContext(storeContext)

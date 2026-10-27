@@ -115,7 +115,7 @@ export default function FilterCategories() {
         {
           products.map((product) => {
             return (< div className="flex w-full " key={product.id} >
-              <Link to={"/singleProduct"} className="w-full border-2 outline-0 border-[#E6E6E6] p-2 focus:border-[#2C742F] focus:border-2 
+              <Link to={`/singleProduct/${product.documentId}`} className="w-full border-2 outline-0 border-[#E6E6E6] p-2 focus:border-[#2C742F] focus:border-2 
               focus:shadow-[0_8px_30px_8px_rgba(44,116,47,0.25)] transition-all
               duration-300
               hover:-translate-y-2
@@ -128,10 +128,23 @@ export default function FilterCategories() {
                 <div className="flex items-center justify-around">
                   <div>
                     <p>{product.productName}</p>
-                    <span className="text-[16px] font-light py-2">{product.productPrice} </span>
-                    <span className="text-[16px] font-light text-[#999999] line-through">{product.oldPrice}</span>
-                    <div className="focus:bg-[#2C742F]">
-                      <img src={`http://localhost:1337${product.rateStar?.url}`} alt={product.productName} />
+                    {product.sale !== 0 ? (
+                      <>
+                        <span className="text-[#B3B3B3] line-through text-3xl">${product.productPrice}</span>
+                        <span className="text-[24px] font-medium text-[#2C742F] text-3xl">${product.productPrice * (1 - product.sale / 100)}</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-3xl">${product.productPrice}</span>
+                      </>
+                    )}
+
+                    <div className="flex">
+                      <div className="text-3xl text-gray-500 font-medium cursor-pointer">☆</div>
+                      <div className="text-3xl text-gray-500 font-medium cursor-pointer">☆</div>
+                      <div className="text-3xl text-gray-500 font-medium cursor-pointer">☆</div>
+                      <div className="text-3xl text-gray-500 font-medium cursor-pointer">☆</div>
+                      <div className="text-3xl text-gray-500 font-medium cursor-pointer">☆</div>
                     </div>
                   </div>
                   <img src={`http://localhost:1337${product.shopBag?.url}`} alt={product.productName} />

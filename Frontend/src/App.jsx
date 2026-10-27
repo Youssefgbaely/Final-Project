@@ -18,12 +18,13 @@ import Register from "./Pages/Register";
 import HotPrice from "./Pages/HotPrice";
 
 
+
 export function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}/>
+          <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/pages" element={<Pages />} />
           <Route path="/blog" element={<Blog />} />
@@ -31,11 +32,16 @@ export function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/fruits" element={<Fruits />} />
           <Route path="/shop-cart" element={<ShopCart />} />
-          
-          <Route path="/singleProduct" element={<SingleProduct />} />
+
+          {/* <Route path="/singleProduct" element={<SingleProduct />} /> */}
           <Route path="/account/login" element={<Login />} />
-          <Route path="/account/Create Account" element={<Register/>} />
-          <Route path="/hotPrice" element={<HotPrice/>}/>
+          <Route path="/account/Create Account" element={<Register />} />
+          <Route path="/hotPrice" element={<HotPrice />} />
+          <Route
+            path="/singleProduct/:id"
+            element={<SingleProduct/>}
+          />
+          
         </Routes>
       </BrowserRouter>
     </div>

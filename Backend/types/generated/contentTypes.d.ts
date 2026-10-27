@@ -473,6 +473,39 @@ export interface ApiCategorieCategorie extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCustomerCustomer extends Struct.CollectionTypeSchema {
+  collectionName: 'customers';
+  info: {
+    displayName: 'Customer';
+    pluralName: 'customers';
+    singularName: 'customer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    customerImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    customerName: Schema.Attribute.String;
+    customerRate: Schema.Attribute.Integer;
+    customerReveiw: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::customer.customer'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPopularProductPopularProduct
   extends Struct.CollectionTypeSchema {
   collectionName: 'popular_products';
@@ -522,33 +555,44 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    addedInformation1: Schema.Attribute.String;
+    addedInformation2: Schema.Attribute.String;
+    addedInformation3: Schema.Attribute.String;
+    addedInformation4: Schema.Attribute.String;
     category: Schema.Attribute.Relation<
       'manyToOne',
       'api::categorie.categorie'
     >;
+    color: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    image1: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    image2: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    image3: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::product.product'
     > &
       Schema.Attribute.Private;
-    oldPrice: Schema.Attribute.String;
+    mainDescription: Schema.Attribute.Text;
+    numberOfStars: Schema.Attribute.Integer;
     outOfStock: Schema.Attribute.Boolean;
     ProductImage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
     productName: Schema.Attribute.String;
-    productPrice: Schema.Attribute.String;
+    productPrice: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
-    rateStar: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    sale: Schema.Attribute.String;
+    sale: Schema.Attribute.Decimal;
     shopBag: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    tags: Schema.Attribute.String;
+    type: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    weight: Schema.Attribute.Integer;
   };
 }
 
@@ -1093,6 +1137,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::categorie.categorie': ApiCategorieCategorie;
+      'api::customer.customer': ApiCustomerCustomer;
       'api::popular-product.popular-product': ApiPopularProductPopularProduct;
       'api::product.product': ApiProductProduct;
       'api::subscriber.subscriber': ApiSubscriberSubscriber;
